@@ -1,6 +1,6 @@
 <h1>Space Game!</h1>
 
-<div fxLayout="row" fxLayoutGap="32px">
+<div class="grid">
   <ng-select [items]="planets"
              bindLabel="name"
              autofocus
@@ -31,7 +31,7 @@
   </ng-select>
 </div>
 <p>Vehicles</p>
-<div fxLayout="row" fxLayoutGap="62px">
+<div class="grid">
   <table *ngIf="show.includes('first')" id="fir-vehicle">
     <thead>
       #1

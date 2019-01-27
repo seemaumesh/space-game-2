@@ -52,7 +52,7 @@ import { Router } from '@angular/router';
     }
 
     search_queen(){
-        this.router.navigateByUrl('/counter');
+        this.router.navigateByUrl('/result');
     }
 }
 
