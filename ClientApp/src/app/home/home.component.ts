@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     public vehicles: Vehicle[];
     public planets: Planet[];
     public show: string[];
-    public search: Search;
+    public search: Search= new Search();
     
 
     constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private router: Router) {
@@ -23,10 +23,6 @@ import { Router } from '@angular/router';
       }, error => console.error(error));
 
         this.show = ["empty"];
-        this.search = <Search> {
-            vehicle_names: [],
-            planets: []
-        };
     }
 
     onChange($event, name) {
@@ -52,7 +48,7 @@ import { Router } from '@angular/router';
     }
 
     search_queen(){
-        this.router.navigateByUrl('/result');
+        this.router.navigateByUrl('/counter');
     }
 }
 
@@ -69,7 +65,7 @@ interface Planet{
 
 }
 
-interface Search{
+class Search{
     vehicle_names: string[];
     planets: string[];
 }
