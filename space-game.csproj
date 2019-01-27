@@ -21,7 +21,6 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
-    <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     <None Remove="ClientApp\src\app\counter\counter.component.html" />
     <None Remove="ClientApp\src\app\counter\counter.component.spec.ts" />
