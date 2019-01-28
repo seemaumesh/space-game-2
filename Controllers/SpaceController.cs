@@ -52,7 +52,7 @@ namespace space_game.Controllers
         // GET api/values/5
         [Route("token")]
         [HttpGet]
-        public async Task<string> GetTokenAsync()
+        public async Task<TokenResponse> GetTokenAsync()
         {
             var response = await client.PostAsJsonAsync("token", "");
             var token = new TokenResponse();
@@ -60,7 +60,7 @@ namespace space_game.Controllers
             {
                 token = await response.Content.ReadAsAsync<TokenResponse>();
             }
-            return token.Token;
+            return token;
         }
 
         // POST api/values

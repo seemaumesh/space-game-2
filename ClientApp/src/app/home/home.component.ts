@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { Token } from '../../../node_modules/@angular/compiler';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +12,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     public space: Space;
     
 
-    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private router: Router) {
+    constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
         let vehicles, planets;
         http.get<Vehicle[]>(baseUrl + 'api/Space/vehicles').subscribe(result => {
         this.space.vehicles = result;
@@ -56,7 +57,19 @@ import { NgSelectModule } from '@ng-select/ng-select';
         }
     }
 
-     search_queen(){
+    search_queen(){
+        let token: string="";
+        this.http.get<TokenResponse>(this.baseUrl + 'api/Space/token').subscribe(result => {
+            this.space.search.token = result.token;
+            let modifiedSearch = {
+                Vehicle_names: this.space.search.vehicle_names,
+                Planet_names: this.space.search.planets,
+                token: this.space.search.token
+            };
+            this.http.post<Result>(this.baseUrl+ 'api/Space', modifiedSearch).subscribe(result=>{
+                let some = result;
+            });
+        }, error => console.error(error));
         this.router.navigateByUrl('/response');
     }
 
@@ -144,7 +157,17 @@ interface Planet{
 
 }
 
+interface TokenResponse{
+    token: string;
+}
+
 export class Search{
     vehicle_names: string[];
     planets: string[];
+    token: string;
+}
+
+interface Result{
+    name: string;
+    status: boolean;
 }
