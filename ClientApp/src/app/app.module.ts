@@ -8,14 +8,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { ResultComponent } from './result/result.component';
+import {ResponseComponent } from './response/response.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    ResultComponent
+    ResponseComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,7 +24,7 @@ import { ResultComponent } from './result/result.component';
     NgSelectModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'result', component: ResultComponent },
+      { path: 'response', component: ResponseComponent },
     ])
   ],
   providers: [],

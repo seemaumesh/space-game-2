@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-result-component',
-  templateUrl: './result.component.html'
+  templateUrl: './response.component.html'
 })
-export class ResultComponent {
+export class ResponseComponent {
   public currentCount = 0;
 
   public incrementCounter() {

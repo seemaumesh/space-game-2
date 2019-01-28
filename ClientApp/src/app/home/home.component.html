@@ -1,28 +1,28 @@
 <h1>Space Game!</h1>
-
+<p>Time Taken: {{space.time}}</p>
 <div class="grid">
-  <ng-select [items]="planets"
+  <ng-select [items]="space.planets"
              bindLabel="name"
              autofocus
              id="firstPlanet"
              (change)="onChange($event, 'first')"
              bindValue="name">
   </ng-select>
-  <ng-select [items]="planets"
+  <ng-select [items]="space.planets"
              bindLabel="name"
              autofocus
              id="secPlanet"
              (change)="onChange($event, 'sec')"
              bindValue="name">
   </ng-select>
-  <ng-select [items]="planets"
+  <ng-select [items]="space.planets"
              bindLabel="name"
              autofocus
              id="thirPlanet"
              (change)="onChange($event, 'thir')"
              bindValue="name">
   </ng-select>
-  <ng-select [items]="planets"
+  <ng-select [items]="space.planets"
              bindLabel="name"
              autofocus
              id="fourPlanet"
@@ -37,10 +37,10 @@
       #1
     </thead>
     <tbody>
-      <tr *ngFor="let vehicle of vehicles">
+      <tr *ngFor="let vehicle of space.vehicles">
 
         <td>
-          <input type="radio" name="fir-radiogroup" (change)="onVehicleChg($event, 'fir')">
+          <input type="radio" name="fir-radiogroup" (change)="onVehicleChg($event, 'first')">
         </td>
         <td>{{ vehicle.name }}</td>
       </tr>
@@ -51,10 +51,10 @@
       #2
     </thead>
     <tbody>
-      <tr *ngFor="let vehicle of vehicles">
+      <tr *ngFor="let vehicle of space.vehicles">
 
         <td>
-          <input type="radio" name="sec-radiogroup">
+          <input type="radio" name="sec-radiogroup" (change)="onVehicleChg($event, 'sec')">
         </td>
         <td>{{ vehicle.name }}</td>
       </tr>
@@ -65,10 +65,10 @@
       #3
     </thead>
     <tbody>
-      <tr *ngFor="let vehicle of vehicles">
+      <tr *ngFor="let vehicle of space.vehicles">
 
         <td>
-          <input type="radio" name="thir-radiogroup">
+          <input type="radio" name="thir-radiogroup" (change)="onVehicleChg($event, 'thir')">
         </td>
         <td>{{ vehicle.name }}</td>
       </tr>
@@ -79,10 +79,10 @@
       #4
     </thead>
     <tbody>
-      <tr *ngFor="let vehicle of vehicles">
+      <tr *ngFor="let vehicle of space.vehicles">
 
         <td>
-          <input type="radio" name="four-radiogroup">
+          <input type="radio" name="four-radiogroup" (change)="onVehicleChg($event, 'four')">
         </td>
         <td>{{ vehicle.name }}</td>
       </tr>
