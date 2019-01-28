@@ -1,4 +1,8 @@
 <h1>Response</h1>
 
 <p>This page displays search result.</p>
+<p>In this case the result is {{displayContent.status}}</p>
+<p *ngIf="displayContent.status===true" id="name">
+  The queen was located on {{displayContent.name}}
+</p>
 

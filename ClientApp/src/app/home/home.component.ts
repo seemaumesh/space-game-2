@@ -24,21 +24,24 @@ import { Token } from '../../../node_modules/@angular/compiler';
         this.space = new Space(vehicles, planets);
         this.show = ["empty"];
 
+        //clear local storage
+        localStorage.clear();
+
     }
 
     onChange($event, name) {
+        var index = this.space.getIndex(name);
         if(this.show.includes(name) && !$event){
 
             this.show = this.show.filter(function(item) { 
               return item !== name
             });
-            this.space.search.planets = this.space.search.planets.filter(function(item){
-                return item !== name;
-            });
+            this.space.search.planets[index] = "";
+            this.space.search.vehicle_names[index] = "";
         }
         else{
             this.show.push(name);
-            var index = this.space.getIndex(name);
+
             this.space.search.planets[index] = $event.name;
             if(this.space.canUsePlanetNVehicle(index)){
               this.space.sumTime();
@@ -60,21 +63,25 @@ import { Token } from '../../../node_modules/@angular/compiler';
     search_queen(){
         let token: string="";
         this.http.get<TokenResponse>(this.baseUrl + 'api/Space/token').subscribe(result => {
-            this.space.search.token = result.token;
+            this.space.search.token = result.token.trim();
             let modifiedSearch = {
                 Vehicle_names: this.space.search.vehicle_names,
                 Planet_names: this.space.search.planets,
                 token: this.space.search.token
             };
             this.http.post<Result>(this.baseUrl+ 'api/Space', modifiedSearch).subscribe(result=>{
-                let some = result;
+
+                localStorage.setItem('response', JSON.stringify(result));
+                this.router.navigateByUrl('/response');
             });
         }, error => console.error(error));
-        this.router.navigateByUrl('/response');
+
     }
 
    
-    
+    enable_result(): boolean{
+        return this.space.search.planets.includes("") || this.space.search.vehicle_names.includes("");
+    }
 
    
 }

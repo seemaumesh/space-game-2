@@ -67,11 +67,19 @@ namespace space_game.Controllers
         [HttpPost]
         public async Task<Result> PostAsync([FromBody]Search value)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync(
-                "find", value);
-            response.EnsureSuccessStatusCode();
-            var find = await response.Content.ReadAsAsync<Result>();
-            return find;
+            try
+            {
+                HttpResponseMessage response = await client.PostAsJsonAsync(
+                    "find", value);
+                response.EnsureSuccessStatusCode();
+                var find = await response.Content.ReadAsAsync<Result>();
+                return find;
+            }
+            catch {
+                ///todo: add logging
+                var response = new Result() { Status = false };
+                return response;
+            }
         }
     }
 }

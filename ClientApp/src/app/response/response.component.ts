@@ -4,10 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-result-component',
   templateUrl: './response.component.html'
 })
-export class ResponseComponent {
-  public currentCount = 0;
-
-  public incrementCounter() {
-    this.currentCount++;
-  }
+    export class ResponseComponent {
+    displayContent: any= {
+        status: false,
+        name: ""
+    };
+    
+    constructor() {
+        this.displayContent = JSON.parse(localStorage.getItem('response'));
+    }
 }
