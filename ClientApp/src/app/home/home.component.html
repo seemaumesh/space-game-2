@@ -1,4 +1,4 @@
-<h1>Space Game!</h1>
+<p>Select planets to search</p>
 <p>Time Taken: {{space.time}}</p>
 <div class="grid">
   <ng-select [items]="space.planets"
@@ -30,7 +30,7 @@
              bindValue="name">
   </ng-select>
 </div>
-<p>Vehicles</p>
+<p>Select vehicles to search</p>
 <div class="grid">
   <table *ngIf="show.includes('first')" id="fir-vehicle">
     <thead>

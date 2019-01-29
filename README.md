@@ -1,4 +1,4 @@
-# space-game
+# Find Falcone
 
 This project is built on dotnet core and angular.
 
@@ -17,4 +17,4 @@ Hence different versions would need to be installed during test and a different 
 ## Nice to have
 
 Basic version of swagger and log4net is implemented.
-Pretty UI
+Basic none fancy UI has been implemented
