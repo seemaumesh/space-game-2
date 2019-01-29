@@ -18,3 +18,12 @@ Hence different versions would need to be installed during test and a different 
 
 Basic version of swagger and log4net is implemented.
 Basic none fancy UI has been implemented
+
+
+## Build and execution
+
+Plane vanile dotnet and ng utilities have been used.
+1. dotnet run to execute the entire app
+2. ng build to build just client
+3. ng test to run UI unit test
+4. ng e2e to run UI end to end test.
