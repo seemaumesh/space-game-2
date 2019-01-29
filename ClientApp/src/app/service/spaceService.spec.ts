@@ -1,22 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async } from '@angular/core/testing';
+import {Search} from "../model/Search";
+import {Space} from "./SpaceService";
 
-import { HomeComponent, Space } from './home.component';
-import {Search} from './home.component';
-import { Component } from '../../../node_modules/@angular/core';
-import { NgSelectModule } from '../../../node_modules/@ng-select/ng-select';
-import { HttpClientModule } from '@angular/common/http';
-
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
-
-  beforeEach(async(() => {
-    
-  }));
-
-  beforeEach(() => {
-    
-  });
+describe('SpaceService', () => {
+  
 
     it('check time', async(() => {
         let planets = [{name: "Donlon", distance: 100}, 

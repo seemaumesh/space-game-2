@@ -41,6 +41,8 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\response\" />
+    <Folder Include="ClientApp\src\app\service\" />
+    <Folder Include="ClientApp\src\app\model\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\SampleDataController.cs" />

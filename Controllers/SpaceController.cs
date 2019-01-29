@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using space_game.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,12 +17,18 @@ namespace space_game.Controllers
     public class SpaceController : Controller
     {
         HttpClient client = new HttpClient();
+        private ILogger _logger;
+        
         public SpaceController()
         {
             client.BaseAddress = new Uri("https://findfalcone.herokuapp.com");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
+            ILoggerFactory _loggerFactory = new LoggerFactory();
+            _loggerFactory.AddProvider(new 
+            ConsoleLoggerProvider(filter: (text, logLevel) => logLevel >= LogLevel.Information, includeScopes: true));
+            _logger = _loggerFactory.CreateLogger(typeof(SpaceController));
         }
         // GET: api/values
         [Route("vehicles")]
@@ -75,8 +83,8 @@ namespace space_game.Controllers
                 var find = await response.Content.ReadAsAsync<Result>();
                 return find;
             }
-            catch {
-                ///todo: add logging
+            catch(Exception ex) {
+                _logger.LogCritical(ex, $"Error while finding with token {value.Token}");
                 var response = new Result() { Status = false };
                 return response;
             }
